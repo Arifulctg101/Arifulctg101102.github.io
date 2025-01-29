@@ -3,10 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+    <title>Asthma Quiz - Diploma in Global Health</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .quiz-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .quiz-container button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .result.correct {
+            color: green;
+        }
+
+        .result.incorrect {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is my first web page hosted on GitHub.</p>
+
+<div class="quiz-container">
+    <h2>Asthma Knowledge Quiz</h2>
+    <form id="quizForm">
+        <p>1. What is Asthma?</p>
+        <input type="radio" name="question1" value="a"> a) A bacterial infection<br>
+        <input type="radio" name="question1" value="b"> b) A chronic respiratory condition<br>
+        <input type="radio" name="question1" value="c"> c) A heart disease<br>
+        <input type="radio" name="question1" value="d"> d) A skin disease<br>
+
+        <p>2. Which of the following is a common trigger for asthma?</p>
+        <input type="radio" name="question2" value="a"> a) Exercise<br>
+        <input type="radio" name="question2" value="b"> b) High temperatures<br>
+        <input type="radio" name="question2" value="c"> c) Dust and allergens<br>
+        <input type="radio" name="question2" value="d"> d) All of the above<br>
+
+        <p>3. Asthma can be managed using which of the following?</p>
+        <input type="radio" name="question3" value="a"> a) Inhalers<br>
+        <input type="radio" name="question3" value="b"> b) Antibiotics<br>
+        <input type="radio" name="question3" value="c"> c) Surgery<br>
+        <input type="radio" name="question3" value="d"> d) Vitamin supplements<br>
+
+        <p>4. Asthma attacks are typically caused by:</p>
+        <input type="radio" name="question4" value="a"> a) Sudden cold weather<br>
+        <input type="radio" name="question4" value="b"> b) Stress<br>
+        <input type="radio" name="question4" value="c"> c) Exposure to allergens<br>
+        <input type="radio" name="question4" value="d"> d) All of the above<br>
+
+        <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    </form>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function checkAnswers() {
+        var form = document.getElementById('quizForm');
+        var result = document.getElementById('result');
+        var score = 0;
+        var totalQuestions = 4;
+
+        // Checking answers for question 1
+        if (form.question1.value === "b") {
+            score++;
+        }
+
+        // Checking answers for question 2
+        if (form.question2.value === "d") {
+            score++;
+        }
+
+        // Checking answers for question 3
+        if (form.question3.value === "a") {
+            score++;
+        }
+
+        // Checking answers for question 4
+        if (form.question4.value === "d") {
+            score++;
+        }
+
+        // Displaying result
+        if (score === totalQuestions) {
+            result.textContent = "Excellent! You scored 100%!";
+            result.className = "result correct";
+        } else {
+            result.textContent = "You scored " + score + " out of " + totalQuestions + ". Try again!";
+            result.className = "result incorrect";
+        }
+    }
+</script>
+
 </body>
 </html>
